@@ -4,7 +4,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #define TOTAL_SECONDS 60.00
-
+// ori!!!1
 #include <stdio.h>
 #include <stdlib.h>
 #include "trees.h"
@@ -23,7 +23,7 @@ typedef struct concert
 	Date date_of_concert; // ההופעה קיום תאריך
 	char* name; // שם ההופעה
 	CIList instruments; // ConcertInstrument כלי הנגינה ברשימה מקושרת של 
-		
+
 } Concert;
 
 Concert* createConcertArr(InstrumentTree tree);
