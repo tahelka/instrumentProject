@@ -1,0 +1,22 @@
+﻿  trees.c
+C:\Users\tahel\source\project24.4\project24.4\trees.c(10,1): warning C4047: 'initializing': 'char *' differs in levels of indirection from 'int'
+C:\Users\tahel\source\project24.4\project24.4\trees.c(66,12): warning C4101: 'curr': unreferenced local variable
+C:\Users\tahel\source\project24.4\project24.4\trees.c(155,54): warning C4047: '=': 'Musician **' differs in levels of indirection from 'Musician *'
+C:\Users\tahel\source\project24.4\project24.4\trees.c(158,55): warning C4047: 'function': 'char **' differs in levels of indirection from 'char ***'
+C:\Users\tahel\source\project24.4\project24.4\trees.c(158,39): warning C4024: 'getNewLineFromFile': different types for formal and actual parameter 2
+C:\Users\tahel\source\project24.4\project24.4\trees.c(166,60): warning C4047: '=': 'char **' differs in levels of indirection from 'char *'
+C:\Users\tahel\source\project24.4\project24.4\trees.c(173,39): warning C4047: 'function': 'char **' differs in levels of indirection from 'char ***'
+C:\Users\tahel\source\project24.4\project24.4\trees.c(173,23): warning C4024: 'shrinkAllocationStr': different types for formal and actual parameter 1
+C:\Users\tahel\source\project24.4\project24.4\trees.c(176,33): warning C4047: 'function': 'char *' differs in levels of indirection from 'char **'
+C:\Users\tahel\source\project24.4\project24.4\trees.c(176,18): warning C4024: 'strtok': different types for formal and actual parameter 1
+C:\Users\tahel\source\project24.4\project24.4\trees.c(187,59): warning C4047: 'function': 'char **' differs in levels of indirection from 'char ***'
+C:\Users\tahel\source\project24.4\project24.4\trees.c(187,29): warning C4024: 'insertToMusicianNameArr': different types for formal and actual parameter 1
+C:\Users\tahel\source\project24.4\project24.4\trees.c(196,43): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\tahel\source\project24.4\project24.4\trees.c(199,76): warning C4244: 'function': conversion from 'float' to 'int', possible loss of data
+C:\Users\tahel\source\project24.4\project24.4\trees.c(210,56): warning C4047: 'function': 'char **' differs in levels of indirection from 'char ***'
+C:\Users\tahel\source\project24.4\project24.4\trees.c(210,40): warning C4024: 'getNewLineFromFile': different types for formal and actual parameter 2
+C:\Users\tahel\source\project24.4\project24.4\trees.c(147,1): warning C4047: 'initializing': 'char *' differs in levels of indirection from 'int'
+C:\Users\tahel\source\project24.4\project24.4\trees.c(225,9): warning C4101: 'tempFullName': unreferenced local variable
+C:\Users\tahel\source\project24.4\project24.4\trees.c(288,24): warning C4022: 'checkMemoryAllocation': pointer mismatch for actual parameter 1
+C:\Users\tahel\source\project24.4\project24.4\trees.c(279): warning C4716: 'createNewMusician': must return a value
+  project24.4.vcxproj -> C:\Users\tahel\source\project24.4\Debug\project24.4.exe

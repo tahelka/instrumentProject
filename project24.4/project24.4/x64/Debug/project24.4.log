@@ -1,0 +1,11 @@
+﻿  concert.c
+C:\Users\tahel\source\project24.4\project24.4\concert.c(73,47): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\tahel\source\project24.4\project24.4\concert.c(75,43): warning C4047: 'function': 'char **' differs in levels of indirection from 'int *'
+C:\Users\tahel\source\project24.4\project24.4\concert.c(75,25): warning C4024: 'shrinkAllocationStr': different types for formal and actual parameter 1
+C:\Users\tahel\source\project24.4\project24.4\concert.c(117,37): warning C4047: '=': 'CIListNode *' differs in levels of indirection from 'int'
+C:\Users\tahel\source\project24.4\project24.4\concert.c(120,32): warning C4013: 'sortMusiciansArrByImportance' undefined; assuming extern returning int
+C:\Users\tahel\source\project24.4\project24.4\concert.c(133,38): warning C4013: 'checkIfMusicianAlreadyPlays' undefined; assuming extern returning int
+C:\Users\tahel\source\project24.4\project24.4\concert.c(138,5): error C2181: illegal else without matching if
+C:\Users\tahel\source\project24.4\project24.4\concert.c(139,16): error C2039: 'mum': is not a member of 'concertInstrument'
+C:\Users\tahel\source\project24.4\project24.4\concertLists.h(14): message : see declaration of 'concertInstrument'
+C:\Users\tahel\source\project24.4\project24.4\concert.c(160,36): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
