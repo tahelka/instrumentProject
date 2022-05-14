@@ -1,6 +1,8 @@
 #ifndef __CONCERT_H
 #define __CONCERT_H
 
+// Ori and Tahel
+
 #define _CRT_SECURE_NO_WARNINGS
 
 #define TOTAL_SECONDS 60.00
