@@ -157,7 +157,7 @@ Musician** getMusicianFromFile(InstrumentTree tr, FILE* ptrMusiciansFile, int* n
 
 	getNewLineFromFile(ptrMusiciansFile, &musicianDetails, &flagStr); // get first musician with details
 
-	while (flagStr != NULL)
+	while (flagStr != NULL) // loop musicians in musiciansGroup
 	{
 
 		musiciansGroup[index] = (Musician*)malloc(sizeof(Musician));
@@ -172,32 +172,34 @@ Musician** getMusicianFromFile(InstrumentTree tr, FILE* ptrMusiciansFile, int* n
 
 
 		// לבדוק האם חייב להקטין את המערך (ועל הדרך להפטר מה"באק סלש אן" או שאפשר גם בלי זה והשורה הזו מיותרת
+		// ERROR?
 		shrinkAllocationStr(&musicianDetails); // shrinking str to the actually length 
 
 		// strtok
 		token = strtok(musicianDetails, seperators); // first token
 		printf("__________ \n");
 
-		printf("\nthis is the full name: ");
+		printf("\nMusicina Full name: ");
 
-		/* walk through other tokens */
+		// walk through other tokens 
 		while (token != NULL)
 		{
-			//delete later
-
-			if (!endOfName && checkMusicianName(tr, token)) {
+			// Name tokens
+			if (!endOfName && checkMusicianName(tr, token))
 				insertToMusicianNameArr(&(musiciansGroup[index]->name), token);
-			}
-			else {
-				printf("\n\n");
-				// NOT PRINTING THE ACCORDIANS OF THE LAST MUSICIAN!!
-				printf("this is the intrument %s\n", token);
 
+			// Instruments detailes tokens
+			else {
 				endOfName = true;
+
+				printf("\n\n");
+				// ERROR - NOT PRINTING THE ACCORDIANS OF THE LAST MUSICIAN!!
+				printf("Intrument: %s\n", token);
+
 				insId = findInsId(tr, token);
 
 				price = atoi(strtok(NULL, seperators));
-				printf("this is the price %0.2f", price);
+				printf("Price: %0.2f", price);
 
 				insertDataToEndList(&(musiciansGroup[index]->instruments), insId, price);
 
@@ -220,36 +222,28 @@ Musician** getMusicianFromFile(InstrumentTree tr, FILE* ptrMusiciansFile, int* n
 }
 
 // מערכים עדיף להחזיר כפרמטר סטטי ולא גנרי
-void insertToMusicianNameArr(char*** fullName, char* name) {
+void insertToMusicianNameArr(char*** fullName, char* token) {
 	static int logSize = 1;
 	static int phySize = 1;
-	int length = strlen(name) + 1;
-	char* newName;
 	char** tempFullName;
-
+	char* newName;
+	int length = strlen(token) + 1;
 
 	newName = (char*)malloc(sizeof(char) * length);
 	checkMemoryAllocation(newName);
 
-
-	newName = name;
+	newName = token;
 
 	if (logSize == phySize) {
 		phySize *= 2;
 
-		(*fullName) = (char*)realloc(*fullName, sizeof(char) * phySize);
+		(*fullName) = (char*)realloc(*fullName, sizeof(char) * phySize); // ERROR? maybe change: (*fullName) --> fullName[logSize]
 		checkMemoryAllocation(*fullName);
-
 	}
 
 	(*fullName)[logSize - 1] = newName;
 
-
-
-
 	printf("%s ", (*fullName)[logSize - 1]);
-
-
 
 	logSize++;
 }
@@ -307,14 +301,14 @@ int* addMusicianToCollection(Musician*** musicianCollection, Musician** musician
 	int id;
 	ListNode* curr;
 
-	indices = (int*)malloc(sizeof(int)* numOfInstruments);
+	indices = (int*)malloc(sizeof(int) * numOfInstruments);
 	checkMemoryAllocation(indices);
 
 	// לשים בפונ נפרדת
 
 	for (int i = 0; i < numOfInstruments; i++)
 		indices[i] = 0;
-	
+
 
 
 	// loop musicianGroup
