@@ -200,7 +200,7 @@ void sortMusiciansArrByImportance(Musician** musiciansArr, int currInstrumentID,
 		ascendingBubbleSort(musiciansArr, currInstrumentID, size);
 	}
 	else { // its equal 1
-		descendingBubbleSort(musiciansArr);
+		descendingBubbleSort(musiciansArr, currInstrumentID, size);
 	}
 }
 
@@ -232,4 +232,31 @@ void ascendingBubbleSort(Musician** musiciansArr, int concertInstrumentID, int s
 	}
 
 }
+
+void descendingBubbleSort(Musician** musiciansArr, int concertInstrumentID, int size) // sort by price
+{
+	int i, j;
+	ListNode* currInstrument;
+
+	for (i = 0; i < size - 1; i++)
+	{
+		for (j = 0; j < size - i - 1; j++)
+		{
+			currInstrument = musiciansArr[j]->instruments.head;
+			while (currInstrument != NULL) // loop Musician instruments
+			{
+				if (currInstrument->rate.insId == concertInstrumentID) // finds the correct instrument the Musician plays in concert
+				{
+					if (currInstrument->rate.price <= (currInstrument->next)->rate.price) // swap Musicinas by price
+					{
+						swap = musiciansArr[j];
+						musiciansArr[j] = musiciansArr[j + 1];
+						musiciansArr[j + 1] = swap;
+					}
+				}
+
+				currInstrument = currInstrument->next;
+			}
+		}
+	}
 
