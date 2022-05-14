@@ -1,11 +1,11 @@
 #ifndef __CONCERT_H
 #define __CONCERT_H
 
-// Ori and Tahel
-// pkaynjjb 
 #define _CRT_SECURE_NO_WARNINGS
 
 #define TOTAL_SECONDS 60.00
+
+// dlskjflksdjflksd 
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,8 +13,6 @@
 #include "utils.h"
 #include "concertLists.h"
 #include "lists.h"
-
-// dskjflksjfd dskfjlkdsjfkl jdkfsljf lk
 
 typedef struct date
 {
