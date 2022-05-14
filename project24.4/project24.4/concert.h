@@ -1,16 +1,21 @@
 #ifndef __CONCERT_H
 #define __CONCERT_H
-// ori and ta
+
+// Ori and Tahel
+// pkaynjjb 
 #define _CRT_SECURE_NO_WARNINGS
 
 #define TOTAL_SECONDS 60.00
-/// taaaaaaaaaaaaaaaaaaa nna
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "trees.h"
 #include "utils.h"
 #include "concertLists.h"
 #include "lists.h"
+
+// dskjflksjfd dskfjlkdsjfkl jdkfsljf lk
+
 typedef struct date
 {
 	int day, month, year;
@@ -22,7 +27,7 @@ typedef struct concert
 	Date date_of_concert; // ההופעה קיום תאריך
 	char* name; // שם ההופעה
 	CIList instruments; // ConcertInstrument כלי הנגינה ברשימה מקושרת של 
-		
+
 } Concert;
 
 Concert* createConcertArr(InstrumentTree tree);
