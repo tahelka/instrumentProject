@@ -4,7 +4,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #define TOTAL_SECONDS 60.00
-// ori!!!1
+// ori!!!
 #include <stdio.h>
 #include <stdlib.h>
 #include "trees.h"
