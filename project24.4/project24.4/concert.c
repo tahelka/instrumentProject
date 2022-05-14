@@ -193,7 +193,7 @@ void manageMusiciansForConcerts(Concert* concertArr, Musician*** musiciansCollec
 }
 
 void printConcertDetails(Concert concert, int numOfConcertMusicians, Musician** musiciansForConcertArr) {
-	char* instrumentName;
+
 	printf("Concert name: %s\n", concert.name);
 	printf("Date: %02d/%02d/%04d %02d:%02d\n", concert.date_of_concert.day, concert.date_of_concert.month, concert.date_of_concert.year, (int)concert.date_of_concert.hour,
 		(int)(60 * (concert.date_of_concert.hour - (int)concert.date_of_concert.hour)));
