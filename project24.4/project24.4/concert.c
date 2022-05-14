@@ -2,7 +2,7 @@
 
 #include "concert.h"
 
-Concert* createConcertArr(InstrumentTree tree) {
+Concert* createConcertArr(InstrumentTree tree, int numOfMusicians) {
 	Concert* concertArr;
 	Concert newConcert;
 	char ch;
@@ -122,7 +122,7 @@ Concert* createConcertArr(InstrumentTree tree) {
 	return concertArr;
 }
 
-void manageMusiciansForConcerts(Concert* concertArr, Musician*** musiciansCollection, int concertNum, int* indicesArr) {
+void manageMusiciansForConcerts(Concert* concertArr, Musician*** musiciansCollection, int concertNum, int* indicesArr, int numOfMusicians) {
 	// MS[insID] -> sort by importance and price
 // if important -> expensive to cheap
 // else -> cheap to expensive
@@ -147,7 +147,7 @@ void manageMusiciansForConcerts(Concert* concertArr, Musician*** musiciansCollec
 		{
 
 			// arg1 - arr of musicians, arg2 - importance
-			sortMusiciansArrByImportance(musiciansCollection[curr->CI.inst], curr->CI.importance);
+			sortMusiciansArrByImportance(musiciansCollection[curr->CI.inst], curr->CI.inst, curr->CI.importance, numOfMusicians);
 
 			// loop Musicians of same instrument
 
@@ -218,30 +218,69 @@ float getAndConvertHourOfConcert() {
 	return min + (sec / TOTAL_SECONDS);
 }
 
-void sortMusiciansArrByImportance(Musician** musiciansArr, int importance) {
+void sortMusiciansArrByImportance(Musician** musiciansArr, int currInstrumentID, int importance, int size) {
 
 	if (importance == 0) {
-		ascendingBubbleSort(musiciansArr);
+		ascendingBubbleSort(musiciansArr, currInstrumentID, size);
 	}
 	else { // its equal 1
-		descendingBubbleSort(musiciansArr);
+		descendingBubbleSort(musiciansArr, currInstrumentID, size);
 	}
 }
 
-void ascendingBubbleSort(Musician** musiciansArr, int size) {
+void ascendingBubbleSort(Musician** musiciansArr, int concertInstrumentID, int size) // sort by price
+{
 	int i, j;
-	for (i = 0; i < n - 1; i++)
+	ListNode* currInstrument;
+
+	for (i = 0; i < size - 1; i++)
 	{
-		for (j = 0; j < n - i - 1; j++)
+		for (j = 0; j < size - i - 1; j++)
 		{
-			if (array[j] > array[j + 1]) /* For decreasing order use '<' instead of '>' */
+			currInstrument = musiciansArr[j]->instruments.head;
+			while (currInstrument != NULL) // loop Musician instruments
 			{
-				swap = array[j];
-				array[j] = array[j + 1];
-				array[j + 1] = swap;
+				if (currInstrument->rate.insId == concertInstrumentID) // finds the correct instrument the Musician plays in concert
+				{
+					if (currInstrument->rate.price > (currInstrument->next)->rate.price) // swap Musicinas by price
+					{
+						swap = musiciansArr[j];
+						musiciansArr[j] = musiciansArr[j + 1];
+						musiciansArr[j + 1] = swap;
+					}
+				}
+
+				currInstrument = currInstrument->next;
 			}
 		}
 	}
 
 }
+
+void descendingBubbleSort(Musician** musiciansArr, int concertInstrumentID, int size) // sort by price
+{
+	int i, j;
+	ListNode* currInstrument;
+
+	for (i = 0; i < size - 1; i++)
+	{
+		for (j = 0; j < size - i - 1; j++)
+		{
+			currInstrument = musiciansArr[j]->instruments.head;
+			while (currInstrument != NULL) // loop Musician instruments
+			{
+				if (currInstrument->rate.insId == concertInstrumentID) // finds the correct instrument the Musician plays in concert
+				{
+					if (currInstrument->rate.price <= (currInstrument->next)->rate.price) // swap Musicinas by price
+					{
+						swap = musiciansArr[j];
+						musiciansArr[j] = musiciansArr[j + 1];
+						musiciansArr[j + 1] = swap;
+					}
+				}
+
+				currInstrument = currInstrument->next;
+			}
+		}
+	}
 
