@@ -207,15 +207,16 @@ Musician** getMusicianFromFile(InstrumentTree tr, FILE* ptrMusiciansFile, int* n
 				insertDataToEndList(&(musiciansGroup[index]->instruments), insId, price, instrumentName);
 
 			}
+			// next token
 			token = strtok(NULL, seperators);
 		}
-		printf("\n\n");
-		printf("this is the list:\n");
+
+		printf("\n");
+		printf("Instrument list: \n");
 		printList(&(musiciansGroup[index]->instruments)); // check
 
-
-
 		getNewLineFromFile(ptrMusiciansFile, &musicianDetails, &flagStr); // get the next musician with details
+
 		index++;
 		endOfName = false;
 	}
@@ -289,7 +290,7 @@ Musician*** createMusiciansCollection(Musician** musiciansGroup, int numOfInstru
 	musicianCollection = (Musician***)malloc(sizeof(Musician**) * numOfInstruments);
 	checkMemoryAllocation(numOfInstruments);
 
-	// allocate for each collection
+	// allocate first Musician for each collection
 	for (int i = 0; i < numOfInstruments; i++)
 		musicianCollection[i] = (Musician**)malloc(sizeof(Musician*)); // insID = 0
 
@@ -307,12 +308,8 @@ int* addMusicianToCollection(Musician*** musicianCollection, Musician** musician
 	indices = (int*)malloc(sizeof(int) * numOfInstruments);
 	checkMemoryAllocation(indices);
 
-	// לשים בפונ נפרדת
-
 	for (int i = 0; i < numOfInstruments; i++)
 		indices[i] = 0;
-
-
 
 	// loop musicianGroup
 	for (int i = 0; i < numOfMusicians; i++)

@@ -55,8 +55,6 @@ void main(int argc, char* argv[])
 		printf("the num of Musicians who plays the instrument with the id %d is: %d\n", i, indicesArr[i]);
 	}
 
-
-
 	fclose(ptrInstrumentsFile);
 }
 

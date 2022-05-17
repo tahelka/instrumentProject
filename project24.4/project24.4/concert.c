@@ -12,31 +12,28 @@ Concert* createConcertArr(InstrumentTree tree, int numOfMusicians) {
 	int importance;
 	int logSize = 0;
 	int phySize = 1;
-	bool endOfInput = false;
 	int numOfConcerts = 0;
 	int phyConcertArrSize = 1;
+	bool endOfInput = false;
 
 	concertArr = (Concert*)malloc(sizeof(Concert));
 	checkMemoryAllocation(concertArr);
 
-	(newConcert.name) = (char*)malloc(sizeof(char));
-	checkMemoryAllocation(newConcert.name);
-
-
 	ch = getchar();
 
+	// loop all concerts
+	while (!endOfInput) {
+		logSize = 0;
+		phySize = 1;
 
-	// maybe to do this in one loop ! 
-
-	while (!endOfInput) { // get the whole concerts
-
-		// get one line, one concert
+		(newConcert.name) = (char*)malloc(sizeof(char));
+		checkMemoryAllocation(newConcert.name);
 
 		makeEmptyCIList(&(newConcert.instruments));
 
 		// get concert name
-		while (ch != ' ') {
-
+		while (ch != ' ')
+		{
 			if (logSize == phySize) {
 				phySize *= 2;
 				(newConcert.name) = (char*)realloc(newConcert.name, sizeof(char) * phySize);
@@ -57,63 +54,48 @@ Concert* createConcertArr(InstrumentTree tree, int numOfMusicians) {
 		scanf("%d", &(newConcert.date_of_concert.year));
 		newConcert.date_of_concert.hour = getAndConvertHourOfConcert();
 
-		printf("%d", (newConcert.date_of_concert.day));
-		printf("%d", (newConcert.date_of_concert.month));
-		printf("%d", (newConcert.date_of_concert.year));
-		printf("%0.2f", (newConcert.date_of_concert.hour));
-
 		// FIX: think about better solution
 		instrumentName = (char*)malloc(sizeof(char) * MAX_INSTRUMENT_LENGTH);
 		checkMemoryAllocation(instrumentName);
 
-		scanf("%s", instrumentName);// name
+		scanf("%s", instrumentName);
 
 		while (instrumentName != '\n') {
-
-			// get CInstrument data
-
 			shrinkAllocationStr(&instrumentName);
 
+			// get CInstrument data
 			id = findInsId(tree, instrumentName);
-			scanf("%d", &amount); // amount
-			scanf("%d", &importance); // importance
+			scanf("%d", &amount);
+			scanf("%d", &importance);
 
-			// update CI list
+			// Update CI list
 			insertDataToEndCIList(&(newConcert.instruments), id, amount, importance);
 
-			instrumentName = (char*)malloc(sizeof(char) * MAX_INSTRUMENT_LENGTH);
-			checkMemoryAllocation(instrumentName);
+			// Malloc is needed if struct is involved
+			/*instrumentName = (char*)malloc(sizeof(char) * MAX_INSTRUMENT_LENGTH);
+			checkMemoryAllocation(instrumentName);*/
 
-			scanf("%s", instrumentName);// name
-			
+			// get the next name
+			scanf("%s", instrumentName);
 		}
 
-		// add concert to concertArr
-
+		// add concert to concertArr and realloc if needed
 		if (numOfConcerts == phyConcertArrSize) {
 			phyConcertArrSize *= 2;
-			concertArr = (Concert*)realloc(concertArr, sizeof(Concert)*phyConcertArrSize);
+			concertArr = (Concert*)realloc(concertArr, sizeof(Concert) * phyConcertArrSize);
 			checkMemoryAllocation(concertArr);
 		}
-
 		concertArr[numOfConcerts] = newConcert;
+		numOfConcerts++;
 
 		ch = getchar();
 
-		if (ch == '\n') { // if there is an empty line, its end of input
-
+		if (ch == '\n') // another \n means end of input
 			endOfInput = true;
-		}
-		else {
-			newConcert.instruments.head->CI.num;
-
-		}
-
-
 	}
 
 	// fix: shrink array, we dont have a general function for that
-	// fix: we need to to add this condition for all shrinks arrays. (?) !!!!!!!!
+	// fix: we need to add this condition for all shrinks arrays. (?) !!!!!!!!
 	if (numOfConcerts < phyConcertArrSize) {
 		concertArr = (Concert*)realloc(concertArr, sizeof(Concert) * numOfConcerts);
 		checkMemoryAllocation(concertArr);
@@ -123,9 +105,6 @@ Concert* createConcertArr(InstrumentTree tree, int numOfMusicians) {
 }
 
 void manageMusiciansForConcerts(Concert* concertArr, Musician*** musiciansCollection, int concertNum, int* indicesArr, int numOfMusicians) {
-	// MS[insID] -> sort by importance and price
-// if important -> expensive to cheap
-// else -> cheap to expensive
 
 	CIListNode* curr;
 	Musician** musiciansForConcertArr;
@@ -146,26 +125,23 @@ void manageMusiciansForConcerts(Concert* concertArr, Musician*** musiciansCollec
 		while (curr = !NULL && isConcertOn) // loop instruments per concert
 		{
 
-			// arg1 - arr of musicians, arg2 - importance
+			// sort by importance
 			sortMusiciansArrByImportance(musiciansCollection[curr->CI.inst], curr->CI.inst, curr->CI.importance, numOfMusicians);
-
-			// loop Musicians of same instrument
 
 			musiciansForConcertArr = (Musician**)realloc(musiciansForConcertArr, logSize + sizeof(Musician*) * (curr->CI.num));
 			checkMemoryAllocation(musiciansForConcertArr);
 
+			// loop Musicians of same instrument
 			for (int i = 0; i < curr->CI.num; i++)
 			{
 				if (curr->CI.num > indicesArr[curr->CI.inst]) { // אולי להוציא את התנאי מחוץ ללולאה ולהוסיף אותו רק כאשר מגדילים את 
-																	// curr->(CI.num)
+
 					isConcertOn = false;
 
 					// לעשות קובץ הדפסות ופונקציה נפרדת לכל הדפסה
 					printf("Could not find musicians for the concert %s", concertArr[index].name);
 					printf("\n\n");
 					break; 	// go to next concert
-
-
 				}
 
 				// check if Musician was not picked
@@ -175,14 +151,11 @@ void manageMusiciansForConcerts(Concert* concertArr, Musician*** musiciansCollec
 					musiciansCollection[curr->CI.inst][i]->concertInstrument_id = curr->CI.inst;
 					logSize++;
 				}
-				else {
+				else
 					(curr->CI.num)++;
-				}
-			}
-
+			} // loop Musicians
 			curr = curr->next;
-
-		}
+		} // loop concert instruments
 
 		if (isConcertOn) {
 			printConcertDetails(concertArr[index], logSize, musiciansForConcertArr);
@@ -190,7 +163,6 @@ void manageMusiciansForConcerts(Concert* concertArr, Musician*** musiciansCollec
 	}
 
 	free(musiciansForConcertArr);
-
 }
 
 void printConcertDetails(Concert concert, int numOfConcertMusicians, Musician** musiciansForConcertArr) {
@@ -315,4 +287,4 @@ void descendingBubbleSort(Musician** musiciansArr, int concertInstrumentID, int 
 			}
 		}
 	}
-
+}
