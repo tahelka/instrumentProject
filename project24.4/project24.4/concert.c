@@ -85,14 +85,14 @@ Concert* createConcertArr(InstrumentTree tree, int numOfMusicians) {
 			checkMemoryAllocation(instrumentName);
 
 			scanf("%s", instrumentName);// name
-			
+
 		}
 
 		// add concert to concertArr
 
 		if (numOfConcerts == phyConcertArrSize) {
 			phyConcertArrSize *= 2;
-			concertArr = (Concert*)realloc(concertArr, sizeof(Concert)*phyConcertArrSize);
+			concertArr = (Concert*)realloc(concertArr, sizeof(Concert) * phyConcertArrSize);
 			checkMemoryAllocation(concertArr);
 		}
 
@@ -189,7 +189,6 @@ void manageMusiciansForConcerts(Concert* concertArr, Musician*** musiciansCollec
 	}
 
 	free(musiciansForConcertArr);
-
 }
 
 void printConcertDetails(Concert concert, int numOfConcertMusicians) {
@@ -283,4 +282,4 @@ void descendingBubbleSort(Musician** musiciansArr, int concertInstrumentID, int 
 			}
 		}
 	}
-
+}
