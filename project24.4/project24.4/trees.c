@@ -148,6 +148,7 @@ Musician** getMusicianFromFile(InstrumentTree tr, FILE* ptrMusiciansFile, int* n
 	int index = 0;
 	int insId;
 	float price = 0;
+	char* instrumentName;
 
 	bool endOfName = false; // end of musician's full name
 
@@ -196,12 +197,14 @@ Musician** getMusicianFromFile(InstrumentTree tr, FILE* ptrMusiciansFile, int* n
 				// ERROR - NOT PRINTING THE ACCORDIANS OF THE LAST MUSICIAN!!
 				printf("Intrument: %s\n", token);
 
+				instrumentName = strdup(token);
+
 				insId = findInsId(tr, token);
 
 				price = atoi(strtok(NULL, seperators));
 				printf("Price: %0.2f", price);
 
-				insertDataToEndList(&(musiciansGroup[index]->instruments), insId, price);
+				insertDataToEndList(&(musiciansGroup[index]->instruments), insId, price, instrumentName);
 
 			}
 			token = strtok(NULL, seperators);

@@ -9,6 +9,7 @@
 typedef struct
 {
 	unsigned short insId; // מספר מזהה של כלי נגינה
+	char* instrumentName; // name of instrument that the musician will play on it.
 	float price; // מחיר שדורש הנגן עבור נגינה בכלי זה
 } MusicianPriceInstrument;
 

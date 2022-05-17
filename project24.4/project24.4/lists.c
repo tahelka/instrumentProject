@@ -62,12 +62,13 @@ ListNode* createNewListNode(MusicianPriceInstrument rate, ListNode* next)
 	return res;
 }
 
-void insertDataToEndList(MPIList* lst, int id, int price)
+void insertDataToEndList(MPIList* lst, int id, int price, char* instrumentName)
 {
 	ListNode* newTail;
 	MusicianPriceInstrument rate;
 	rate.insId = id;
 	rate.price = price;
+	rate.instrumentName = instrumentName;
 
 	newTail = createNewListNode(rate, NULL);
 	insertNodeToEndList(lst, newTail);

@@ -162,6 +162,7 @@ void manageMusiciansForConcerts(Concert* concertArr, Musician*** musiciansCollec
 
 					// לעשות קובץ הדפסות ופונקציה נפרדת לכל הדפסה
 					printf("Could not find musicians for the concert %s", concertArr[index].name);
+					printf("\n\n");
 					break; 	// go to next concert
 
 
@@ -194,15 +195,37 @@ void manageMusiciansForConcerts(Concert* concertArr, Musician*** musiciansCollec
 
 void printConcertDetails(Concert concert, int numOfConcertMusicians, Musician** musiciansForConcertArr) {
 
+	// FIX: change the name "listNode to MPILNODE !!
+	ListNode* playInstrument; // the instrument node that a musician is going to play on a concert
 	printf("Concert name: %s\n", concert.name);
 	printf("Date: %02d/%02d/%04d %02d:%02d\n", concert.date_of_concert.day, concert.date_of_concert.month, concert.date_of_concert.year, (int)concert.date_of_concert.hour,
 		(int)(60 * (concert.date_of_concert.hour - (int)concert.date_of_concert.hour)));
 	printf("The next musicians will play on concert:\n");
 	for (int i = 0; i < numOfConcertMusicians; i++)
 	{
-		printf("The musician %s will play on ")
+		playInstrument = findInstrumentNode(&(musiciansForConcertArr[i]->instruments), musiciansForConcertArr[i]->concertInstrument_id);
+		printf("The musician ");
+		printFullName(musiciansForConcertArr[i]->name);
+		printf("will play on %s, price: %d\n" , playInstrument->rate.instrumentName, playInstrument->rate.price);
 	}
+	printf("\n\n");
 
+}
+
+void printFullName(char** fullFame) {
+	
+}
+
+ListNode* findInstrumentNode(MPIList* lst , int id) {
+	ListNode* curr;
+	curr = lst->head;
+
+	while (curr!=NULL) {
+		if (curr->rate.insId == id) {
+			return curr;
+		}
+		curr = curr->next;
+	}
 }
 
 bool checkIfMusicianAlreadyPlays(Musician** musiciansForConcertArr, int size, Musician* musician) {
