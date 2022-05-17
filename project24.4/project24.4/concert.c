@@ -184,15 +184,24 @@ void manageMusiciansForConcerts(Concert* concertArr, Musician*** musiciansCollec
 		}
 
 		if (isConcertOn) {
-			printConcertDetails(concertArr[index], musiciansForConcertArr, logSize);
+			printConcertDetails(concertArr[index], logSize, musiciansForConcertArr);
 		}
 	}
 
 	free(musiciansForConcertArr);
 }
 
-void printConcertDetails(Concert concert, int numOfConcertMusicians) {
-	printCIList();
+void printConcertDetails(Concert concert, int numOfConcertMusicians, Musician** musiciansForConcertArr) {
+
+	printf("Concert name: %s\n", concert.name);
+	printf("Date: %02d/%02d/%04d %02d:%02d\n", concert.date_of_concert.day, concert.date_of_concert.month, concert.date_of_concert.year, (int)concert.date_of_concert.hour,
+		(int)(60 * (concert.date_of_concert.hour - (int)concert.date_of_concert.hour)));
+	printf("The next musicians will play on concert:\n");
+	for (int i = 0; i < numOfConcertMusicians; i++)
+	{
+		printf("The musician %s will play on ")
+	}
+
 }
 
 bool checkIfMusicianAlreadyPlays(Musician** musiciansForConcertArr, int size, Musician* musician) {
