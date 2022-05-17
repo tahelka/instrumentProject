@@ -169,6 +169,8 @@ Musician** getMusicianFromFile(InstrumentTree tr, FILE* ptrMusiciansFile, int* n
 
 		musiciansGroup[index]->concertInstrument_id = DEFUALT_ID;
 
+		musiciansGroup[index]->numOfNames = 0;
+
 		makeEmptyList(&(musiciansGroup[index]->instruments));
 
 
@@ -186,8 +188,10 @@ Musician** getMusicianFromFile(InstrumentTree tr, FILE* ptrMusiciansFile, int* n
 		while (token != NULL)
 		{
 			// Name tokens
-			if (!endOfName && checkMusicianName(tr, token))
+			if (!endOfName && checkMusicianName(tr, token)) {
 				insertToMusicianNameArr(&(musiciansGroup[index]->name), token);
+				(musiciansGroup[index]->numOfNames)++;
+			}
 
 			// Instruments detailes tokens
 			else {
@@ -221,7 +225,7 @@ Musician** getMusicianFromFile(InstrumentTree tr, FILE* ptrMusiciansFile, int* n
 		endOfName = false;
 	}
 
-	*numOfMusicians = index + 1;
+	*numOfMusicians = index;
 	return musiciansGroup;
 }
 
@@ -253,7 +257,7 @@ void insertToMusicianNameArr(char*** fullName, char* token) {
 }
 
 
-
+// FIX: change the function's name to checkIf.. ?
 // checks if the name is valid and not an instrument or price
 bool checkMusicianName(InstrumentTree tr, char* str)
 {

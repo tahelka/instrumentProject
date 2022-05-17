@@ -29,6 +29,7 @@ typedef struct mplist
 typedef struct musician
 {
 	char** name; // מערך של השמות המרכיבים את שמו המלא 
+	int numOfNames; // num of musician's names
 	MPIList instruments; // כלי הנגינה ברשימה מקושרת של MusicianPriceInstrument
 	int concertInstrument_id; // the id of the instrument that the musician will play on the concert
 } Musician;

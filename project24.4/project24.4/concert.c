@@ -177,15 +177,18 @@ void printConcertDetails(Concert concert, int numOfConcertMusicians, Musician** 
 	{
 		playInstrument = findInstrumentNode(&(musiciansForConcertArr[i]->instruments), musiciansForConcertArr[i]->concertInstrument_id);
 		printf("The musician ");
-		printFullName(musiciansForConcertArr[i]->name);
+		printFullNameOfMusician(musiciansForConcertArr[i]);
 		printf("will play on %s, price: %d\n" , playInstrument->rate.instrumentName, playInstrument->rate.price);
 	}
 	printf("\n\n");
 
 }
 
-void printFullName(char** fullFame) {
-	
+void printFullNameOfMusician(Musician* musician) {
+	for (int i = 0; i < musician->numOfNames; i++)
+	{
+		printf("%s ", (musician->name)[index]);
+	}
 }
 
 ListNode* findInstrumentNode(MPIList* lst , int id) {
