@@ -18,7 +18,7 @@ The purpose of the program is to organize performances by assigning musicians fr
 1. We saved all the musicians that are listed in a storage file which is an array of pointers to Musician named MusiciansGroup.
 2. We used structs as wise:
 
-c
+```c
 typedef struct
 {
  short unsigned insId;
@@ -31,7 +31,7 @@ typedef struct
  MusicianPriceInstrument; // instruments MPIList
 } Musician;
 
-
+```
 - We maintained an array of arrays called MusiciansCollection of pointers to musicians in the MusiciansGroup array.
 1. If a musician knows how to play x instruments he will have a total of x votes from MusiciansCollection.
 2. The number of members of the MusiciansCollection array will be the number of types of musical instruments.
@@ -42,7 +42,7 @@ typedef struct
 ## Finding a match
 Here's the code for maintaing the musicians array and finding the match based on their skills
 
-c
+```c
 for (index = 0; index < concertNum; index++) { // loop concerts
 
 		// ìäëðéñ ìôä àú äîàìå÷ ëé àæ àðçðå ãåøñéí àú îòøê äîåæé÷àéí ùì ääåôòåú ä÷åãîåú
@@ -85,10 +85,10 @@ for (index = 0; index < concertNum; index++) { // loop concerts
 			curr = curr->next;
 		} // loop concert instruments
     
-
+```
 
 
  
 
 
-##### Made by [Ori Nurieli](https://github.com/orinurieli) & [Tahel Karavani](https://github.com/tahelka)
+##### Made by [Ori Nurieli](https://github.com/orinurieli) & [Tahel Karavani](https://github.com/tahelka)  
