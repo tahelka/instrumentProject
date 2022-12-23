@@ -1,4 +1,3 @@
-# instrumentProject
 # Band Manager Exercise in C Language
 
 As part of a Introduction to programming course, we were asked to build a manager software for managing bands.
