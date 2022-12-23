@@ -42,7 +42,6 @@ typedef struct
 ## Finding a match
 Here's the code for maintaing the musicians array and finding the match based on their skills
 
-c
 for (index = 0; index < concertNum; index++) { // loop concerts
 
 		// ìäëðéñ ìôä àú äîàìå÷ ëé àæ àðçðå ãåøñéí àú îòøê äîåæé÷àéí ùì ääåôòåú ä÷åãîåú
