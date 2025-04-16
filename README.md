@@ -1,4 +1,4 @@
-# Band Manager Exercise in C Language
+# Band Manager Software
 
 As part of a Introduction to programming course, we were asked to build a manager software for managing bands.
 The purpose of the program is to organize performances by assigning musicians from the pool to the performances.
